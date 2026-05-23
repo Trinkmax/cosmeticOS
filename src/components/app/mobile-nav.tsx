@@ -25,6 +25,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import type { AppRole } from "@/lib/auth/session";
+import { Logo } from "./logo";
 
 type NavItem = {
   href: string;
@@ -146,12 +147,14 @@ export function MobileNavButton({ role }: { role: AppRole | null }) {
                   </DialogPrimitive.Description>
 
                   <div className="flex h-14 items-center justify-between border-b border-border/60 px-4">
-                    <div className="flex items-center gap-2 font-semibold tracking-tight">
-                      <span className="grid size-7 place-items-center rounded-lg bg-gradient-to-br from-blush-400 to-peach-400 text-white shadow-blush">
-                        <Sparkles className="size-4" />
-                      </span>
-                      cosmetic<span className="text-brand-600">OS</span>
-                    </div>
+                    <Link
+                      href="/app"
+                      onClick={() => setOpen(false)}
+                      className="outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      aria-label="cosmeticOS — Ir al dashboard"
+                    >
+                      <Logo className="h-6 w-auto" />
+                    </Link>
                     <button
                       onClick={() => setOpen(false)}
                       className="rounded-md p-1.5 hover:bg-blush-50"

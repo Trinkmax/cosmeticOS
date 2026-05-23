@@ -22,6 +22,7 @@ import {
 import { motion, LayoutGroup } from "motion/react";
 import { cn } from "@/lib/utils";
 import type { AppRole } from "@/lib/auth/session";
+import { Logo } from "./logo";
 
 type NavItem = {
   href: string;
@@ -104,12 +105,13 @@ export function Sidebar({ role }: { role: AppRole | null }) {
 
   return (
     <aside className="hidden h-dvh w-60 shrink-0 flex-col border-r border-border/60 bg-sidebar md:flex">
-      <div className="flex h-16 items-center gap-2 px-5 font-semibold tracking-tight text-sidebar-foreground">
-        <span className="grid size-7 place-items-center rounded-lg bg-gradient-to-br from-blush-400 to-peach-400 text-white shadow-blush">
-          <Sparkles className="size-4" />
-        </span>
-        cosmetic<span className="text-brand-600">OS</span>
-      </div>
+      <Link
+        href="/app"
+        className="flex h-16 items-center px-5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        aria-label="cosmeticOS — Ir al dashboard"
+      >
+        <Logo priority className="h-6 w-auto" />
+      </Link>
 
       <LayoutGroup>
         <nav className="flex-1 overflow-y-auto px-3 pb-6">

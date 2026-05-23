@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar, MessageCircle, Sparkles, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { Logo } from "@/components/app/logo";
 
 const features = [
   {
@@ -32,11 +33,12 @@ export default function HomePage() {
       <div className="absolute inset-0 -z-10 gradient-mesh opacity-70" />
 
       <nav className="container mx-auto flex h-16 items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid size-7 place-items-center rounded-lg bg-gradient-to-br from-blush-400 to-peach-400 text-white shadow-md">
-            <Sparkles className="size-4" />
-          </span>
-          cosmetic<span className="text-brand-600">OS</span>
+        <Link
+          href="/"
+          className="outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          aria-label="cosmeticOS — Inicio"
+        >
+          <Logo priority className="h-7 w-auto" />
         </Link>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" size="sm">

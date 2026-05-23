@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
+import { Logo } from "@/components/app/logo";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,12 +12,10 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="w-full max-w-sm">
           <Link
             href="/"
-            className="mb-8 inline-flex items-center gap-2 font-semibold tracking-tight md:mb-10"
+            className="mb-8 inline-flex items-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:mb-10"
+            aria-label="cosmeticOS — Inicio"
           >
-            <span className="grid size-7 place-items-center rounded-lg bg-gradient-to-br from-blush-400 to-peach-400 text-white shadow-blush">
-              <Sparkles className="size-4" />
-            </span>
-            cosmetic<span className="text-brand-600">OS</span>
+            <Logo priority className="h-7 w-auto" />
           </Link>
           {children}
         </div>
