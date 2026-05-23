@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles } from "lucide-react";
 import { Logo } from "@/components/app/logo";
 
@@ -22,9 +23,17 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       <aside className="relative hidden overflow-hidden lg:block">
-        <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blush-500/85 via-peach-400/70 to-lavender-400/60" />
-        <div className="absolute inset-0 flex flex-col justify-between p-12 text-white">
+        <Image
+          src="/spa-interior.png"
+          alt="cosmeticOS Spa"
+          fill
+          sizes="50vw"
+          priority
+          className="object-cover transition-transform duration-1000 hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blush-700/80 via-peach-600/75 to-lavender-700/85 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-between p-12 text-white z-10">
           <div className="opacity-90">
             <Sparkles className="size-8" />
           </div>

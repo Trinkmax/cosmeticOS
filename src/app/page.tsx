@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, MessageCircle, Sparkles, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, SlideUp, Stagger, StaggerItem } from "@/components/motion/primitives";
@@ -83,6 +84,24 @@ export default function HomePage() {
           <Button asChild size="xl" variant="outline">
             <Link href="/login">Ya tengo cuenta</Link>
           </Button>
+        </SlideUp>
+
+        <SlideUp delay={0.4} className="mx-auto mt-16 max-w-5xl px-4 md:mt-24">
+          <div className="relative rounded-2xl border border-border/80 bg-card p-2 shadow-card backdrop-blur-md">
+            {/* Background Glow */}
+            <div className="absolute -inset-10 -z-10 bg-gradient-to-tr from-blush-300/30 to-peach-300/30 blur-3xl opacity-80" />
+            
+            <div className="relative overflow-hidden rounded-xl border border-border/60">
+              <Image
+                src="/dashboard-mockup.png"
+                alt="cosmeticOS Dashboard"
+                width={1920}
+                height={1080}
+                className="w-full h-auto object-cover transition-all duration-700 hover:scale-[1.01]"
+                priority
+              />
+            </div>
+          </div>
         </SlideUp>
 
         <Stagger className="mx-auto mt-24 grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
