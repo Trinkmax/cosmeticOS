@@ -1,0 +1,367 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================================ */
+/* cosmeticOS — Design tokens                                                   */
+/* Paleta "spa amanecer": blush + peach + cream + lavender (acento).            */
+/* Vibe editorial de revista de belleza, no SaaS frío.                          */
+/* ============================================================================ */
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ---- Blush (rosa suave) ---- */
+  --color-blush-50: oklch(0.985 0.01 15);
+  --color-blush-100: oklch(0.96 0.025 15);
+  --color-blush-200: oklch(0.91 0.045 15);
+  --color-blush-300: oklch(0.84 0.075 15);
+  --color-blush-400: oklch(0.76 0.105 15);
+  --color-blush-500: oklch(0.68 0.13 15);
+  --color-blush-600: oklch(0.6 0.15 15);
+  --color-blush-700: oklch(0.5 0.13 15);
+  --color-blush-800: oklch(0.4 0.1 15);
+  --color-blush-900: oklch(0.32 0.07 15);
+  --color-blush-950: oklch(0.22 0.045 15);
+
+  /* ---- Peach (durazno cálido) ---- */
+  --color-peach-50: oklch(0.985 0.013 60);
+  --color-peach-100: oklch(0.965 0.03 60);
+  --color-peach-200: oklch(0.93 0.06 60);
+  --color-peach-300: oklch(0.86 0.095 60);
+  --color-peach-400: oklch(0.78 0.12 60);
+  --color-peach-500: oklch(0.71 0.14 60);
+  --color-peach-600: oklch(0.63 0.15 60);
+  --color-peach-700: oklch(0.53 0.13 60);
+  --color-peach-800: oklch(0.43 0.105 60);
+  --color-peach-900: oklch(0.34 0.075 60);
+
+  /* ---- Cream (crema neutra cálida) ---- */
+  --color-cream-50: oklch(0.99 0.006 75);
+  --color-cream-100: oklch(0.975 0.012 75);
+  --color-cream-200: oklch(0.945 0.02 75);
+  --color-cream-300: oklch(0.9 0.028 70);
+  --color-cream-400: oklch(0.82 0.035 65);
+  --color-cream-500: oklch(0.7 0.038 60);
+  --color-cream-600: oklch(0.58 0.035 55);
+  --color-cream-700: oklch(0.45 0.03 50);
+  --color-cream-800: oklch(0.34 0.025 45);
+  --color-cream-900: oklch(0.24 0.022 40);
+  --color-cream-950: oklch(0.16 0.018 35);
+
+  /* ---- Lavender (acento, no protagonista) ---- */
+  --color-lavender-50: oklch(0.975 0.018 290);
+  --color-lavender-100: oklch(0.94 0.035 290);
+  --color-lavender-200: oklch(0.89 0.06 290);
+  --color-lavender-300: oklch(0.81 0.09 290);
+  --color-lavender-400: oklch(0.71 0.115 290);
+  --color-lavender-500: oklch(0.62 0.135 290);
+  --color-lavender-600: oklch(0.54 0.145 290);
+  --color-lavender-700: oklch(0.45 0.13 290);
+
+  /* ---- Alias legacy (brand/coral) → mapean a la nueva paleta ----
+     Componentes ya escritos siguen funcionando.                       */
+  --color-brand-50: var(--color-blush-50);
+  --color-brand-100: var(--color-blush-100);
+  --color-brand-200: var(--color-blush-200);
+  --color-brand-300: var(--color-blush-300);
+  --color-brand-400: var(--color-blush-400);
+  --color-brand-500: var(--color-blush-500);
+  --color-brand-600: var(--color-blush-600);
+  --color-brand-700: var(--color-blush-700);
+  --color-brand-800: var(--color-blush-800);
+  --color-brand-900: var(--color-blush-900);
+  --color-brand-950: var(--color-blush-950);
+
+  --color-coral-400: var(--color-peach-400);
+  --color-coral-500: var(--color-peach-500);
+  --color-coral-600: var(--color-peach-600);
+
+  /* Sombras tintadas en rosa: elementos parecen flotar sobre crema */
+  --shadow-soft:
+    0 1px 2px 0 oklch(0.6 0.1 15 / 0.04),
+    0 1px 3px 0 oklch(0.6 0.1 15 / 0.06);
+  --shadow-card:
+    0 0 0 1px oklch(0.6 0.08 15 / 0.04),
+    0 2px 6px -1px oklch(0.6 0.1 15 / 0.06),
+    0 8px 24px -8px oklch(0.7 0.08 10 / 0.15);
+  --shadow-glow: 0 0 0 4px oklch(0.84 0.075 15 / 0.18);
+  --shadow-blush:
+    0 8px 24px -8px oklch(0.7 0.1 10 / 0.22),
+    0 2px 6px -2px oklch(0.7 0.1 10 / 0.12);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Fondos: cream cálido, no blanco frío */
+  --background: oklch(0.99 0.006 75);
+  --foreground: oklch(0.24 0.022 40);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.022 40);
+  --popover: oklch(0.998 0.004 75);
+  --popover-foreground: oklch(0.24 0.022 40);
+
+  /* Primario: blush-500 */
+  --primary: oklch(0.68 0.13 15);
+  --primary-foreground: oklch(0.99 0.008 30);
+
+  --secondary: oklch(0.96 0.018 60);
+  --secondary-foreground: oklch(0.32 0.04 25);
+
+  --muted: oklch(0.965 0.012 75);
+  --muted-foreground: oklch(0.5 0.03 50);
+
+  --accent: oklch(0.94 0.035 290);
+  --accent-foreground: oklch(0.32 0.06 290);
+
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 25);
+
+  --border: oklch(0.92 0.018 30);
+  --input: oklch(0.92 0.018 30);
+  --ring: oklch(0.84 0.075 15); /* blush-300 — más suave que el lila */
+
+  --chart-1: oklch(0.68 0.13 15);    /* blush */
+  --chart-2: oklch(0.71 0.14 60);    /* peach */
+  --chart-3: oklch(0.62 0.135 290);  /* lavender */
+  --chart-4: oklch(0.66 0.13 175);   /* mint suave (contraste) */
+  --chart-5: oklch(0.55 0.035 50);   /* cream-tan */
+
+  --sidebar: oklch(0.985 0.01 70);
+  --sidebar-foreground: oklch(0.32 0.03 45);
+  --sidebar-primary: oklch(0.68 0.13 15);
+  --sidebar-primary-foreground: oklch(0.99 0.008 30);
+  --sidebar-accent: oklch(0.94 0.025 30);
+  --sidebar-accent-foreground: oklch(0.32 0.06 25);
+  --sidebar-border: oklch(0.91 0.02 30);
+  --sidebar-ring: oklch(0.84 0.075 15);
+}
+
+.dark {
+  --background: oklch(0.17 0.02 25);
+  --foreground: oklch(0.95 0.01 60);
+  --card: oklch(0.21 0.022 25);
+  --card-foreground: oklch(0.95 0.01 60);
+  --popover: oklch(0.21 0.022 25);
+  --popover-foreground: oklch(0.95 0.01 60);
+
+  --primary: oklch(0.78 0.12 15);
+  --primary-foreground: oklch(0.17 0.04 25);
+
+  --secondary: oklch(0.26 0.025 30);
+  --secondary-foreground: oklch(0.95 0.01 60);
+
+  --muted: oklch(0.24 0.018 30);
+  --muted-foreground: oklch(0.7 0.022 50);
+
+  --accent: oklch(0.3 0.04 290);
+  --accent-foreground: oklch(0.96 0.012 290);
+
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 25);
+
+  --border: oklch(0.32 0.025 30);
+  --input: oklch(0.28 0.025 30);
+  --ring: oklch(0.78 0.12 15);
+
+  --chart-1: oklch(0.78 0.12 15);
+  --chart-2: oklch(0.8 0.13 60);
+  --chart-3: oklch(0.72 0.13 290);
+  --chart-4: oklch(0.76 0.12 175);
+  --chart-5: oklch(0.7 0.04 50);
+
+  --sidebar: oklch(0.2 0.022 25);
+  --sidebar-foreground: oklch(0.95 0.01 60);
+  --sidebar-primary: oklch(0.78 0.12 15);
+  --sidebar-primary-foreground: oklch(0.17 0.04 25);
+  --sidebar-accent: oklch(0.27 0.03 30);
+  --sidebar-accent-foreground: oklch(0.95 0.01 60);
+  --sidebar-border: oklch(0.27 0.03 30);
+  --sidebar-ring: oklch(0.78 0.12 15);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "cv11" 1;
+  }
+
+  /* Editorial headings: tracking ajustado para sensación revista */
+  h1, h2, h3, .heading {
+    letter-spacing: -0.011em;
+  }
+
+  /* Tabular nums elegante: peso 500 con cream-900, no font-bold negro */
+  .tabular-nums {
+    font-weight: 500;
+    color: oklch(0.24 0.022 40);
+  }
+  .dark .tabular-nums {
+    color: oklch(0.95 0.01 60);
+  }
+
+  /* Focus ring suave (blush, no lila) */
+  :focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px oklch(0.84 0.075 15 / 0.55);
+    border-radius: inherit;
+  }
+
+  /* Scrollbar refinada */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-border;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.84 0.075 15 / 0.5);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+
+  /* Selection: blush-200 al 40% */
+  ::selection {
+    background: oklch(0.91 0.045 15 / 0.4);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Gradient mesh "spa amanecer": blush → peach → cream + punto lavender */
+  .gradient-mesh {
+    background:
+      radial-gradient(at 8% 12%, oklch(0.91 0.045 15 / 0.55) 0px, transparent 50%),
+      radial-gradient(at 92% 8%, oklch(0.93 0.06 60 / 0.55) 0px, transparent 50%),
+      radial-gradient(at 88% 92%, oklch(0.91 0.045 15 / 0.4) 0px, transparent 50%),
+      radial-gradient(at 12% 88%, oklch(0.93 0.06 60 / 0.32) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, oklch(0.81 0.09 290 / 0.18) 0px, transparent 50%);
+    background-color: oklch(0.975 0.012 75);
+  }
+  .dark .gradient-mesh {
+    background:
+      radial-gradient(at 8% 12%, oklch(0.4 0.1 15 / 0.45) 0px, transparent 50%),
+      radial-gradient(at 92% 8%, oklch(0.43 0.105 60 / 0.45) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, oklch(0.45 0.13 290 / 0.18) 0px, transparent 50%);
+    background-color: oklch(0.17 0.02 25);
+  }
+
+  .glass {
+    @apply bg-card/65 backdrop-blur-xl backdrop-saturate-150 border border-border/60;
+  }
+
+  /* Skeleton "respirando" — gradiente cream-100 → cream-50 → cream-100 (más sutil) */
+  .skeleton-breath {
+    background: linear-gradient(
+      90deg,
+      oklch(0.975 0.012 75) 0%,
+      oklch(0.99 0.006 75) 50%,
+      oklch(0.975 0.012 75) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-breath 2.4s ease-in-out infinite;
+  }
+  .dark .skeleton-breath {
+    background: linear-gradient(
+      90deg,
+      oklch(0.24 0.022 30) 0%,
+      oklch(0.3 0.028 30) 50%,
+      oklch(0.24 0.022 30) 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Halo suave para CTAs principales */
+  .glow-blush {
+    box-shadow:
+      0 8px 24px -8px oklch(0.68 0.13 15 / 0.32),
+      0 2px 6px -2px oklch(0.68 0.13 15 / 0.2);
+  }
+}
+
+@keyframes skeleton-breath {
+  0%, 100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
